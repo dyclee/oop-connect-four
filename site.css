@@ -3,6 +3,10 @@ body, html {
   margin: 0;
 }
 
+#game-name {
+  text-align: center;
+  font-size: 3em;
+}
 button {
   border: 0;
   background-color: orangered;

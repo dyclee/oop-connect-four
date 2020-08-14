@@ -42,6 +42,7 @@ window.addEventListener("DOMContentLoaded", e => {
                     }
                 }
             };
+
             // checks if columns are full
             for (let i = 0; i < 7; i++) {
                 const selectedColumn = document.getElementById(`column-${i}`);
@@ -68,6 +69,9 @@ window.addEventListener("DOMContentLoaded", e => {
         let columnIndex = Number(e.target.id.slice(-1));
         game.playInColumn(columnIndex);
         updateUI();
+        if (game.winnerNumber !== 0) {
+            clicksTarget.style.pointerEvents = 'none';
+        }
     })
 
     //must enter values for both names to enable new game button
@@ -81,6 +85,7 @@ window.addEventListener("DOMContentLoaded", e => {
     });
     // starts new game
     newGameButton.addEventListener("click", e => {
+        clicksTarget.style.pointerEvents = 'auto';
         game = new Game(inputPlayerOneName.value, inputPlayerTwoName.value);
         resetNames();
         disableNewGameButton();
